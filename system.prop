@@ -9,7 +9,7 @@ ro.netflix.bsp_rev=Q660-13149-1
 
 # Radio
 DEVICE_PROVISIONED=1
-ril.subscription.types=NV,RUIM
+ril.subscription.types=RUIM
 telephony.lteOnCdmaDevice=1
 
 # System Server

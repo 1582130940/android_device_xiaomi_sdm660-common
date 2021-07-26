@@ -17,26 +17,35 @@
 import common
 import re
 
+def FullOTA_InstallBegin(info):
+  input_zip = info.input_zip
+  AddImage(info, "RADIO", input_zip, "super_dummy.img", "/tmp/super_dummy.img");
+  info.script.AppendExtra('package_extract_file("install/bin/flash_super_dummy.sh", "/tmp/flash_super_dummy.sh");')
+  info.script.AppendExtra('set_metadata("/tmp/flash_super_dummy.sh", "uid", 0, "gid", 0, "mode", 0755);')
+  info.script.AppendExtra('run_program("/tmp/flash_super_dummy.sh");')
+  return
+
 def FullOTA_InstallEnd(info):
-  OTA_InstallEnd(info)
+  input_zip = info.input_zip
+  OTA_InstallEnd(info, input_zip)
   return
 
 def IncrementalOTA_InstallEnd(info):
-  OTA_InstallEnd(info)
+  input_zip = info.target_zip
+  OTA_InstallEnd(info, input_zip)
   return
 
-def AddImage(info, basename, dest):
-  name = basename
-  path = "IMAGES/" + name
-  if path not in info.input_zip.namelist():
+def AddImage(info, dir, input_zip, basename, dest):
+  path = dir + "/" + basename
+  if path not in input_zip.namelist():
     return
 
-  data = info.input_zip.read(path)
-  common.ZipWriteStr(info.output_zip, name, data)
+  data = input_zip.read(path)
+  common.ZipWriteStr(info.output_zip, basename, data)
   info.script.Print("Patching {} image unconditionally...".format(dest.split('/')[-1]))
-  info.script.AppendExtra('package_extract_file("%s", "%s");' % (name, dest))
+  info.script.AppendExtra('package_extract_file("%s", "%s");' % (basename, dest))
 
-def OTA_InstallEnd(info):
+def OTA_InstallEnd(info, input_zip):
   info.script.AppendExtra('run_program("/system/bin/rm", "-rf", "/data/anr");')
   info.script.AppendExtra('run_program("/system/bin/rm", "-rf", "/data/backup/pending");')
   info.script.AppendExtra('run_program("/system/bin/rm", "-rf", "/data/cache");')

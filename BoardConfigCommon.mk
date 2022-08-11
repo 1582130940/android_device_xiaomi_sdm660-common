@@ -129,7 +129,6 @@ PRODUCT_PUBLIC_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/public
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 # Treble
-PRODUCT_FULL_TREBLE_OVERRIDE := true
 BOARD_VNDK_VERSION := current
 
 # Wifi

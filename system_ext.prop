@@ -1,2 +1,5 @@
 # DPM
 persist.vendor.dpm.feature=11
+
+# Media
+ro.media.recorder-max-base-layer-fps=60

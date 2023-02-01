@@ -82,12 +82,17 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     liba2dpoffload \
     libaudio-resampler \
+    libbatterylistener \
+    libcirrusspkrprot \
+    libcomprcapture \
+    libexthwplugin \
     libhdmiedid \
     libhfp \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     libsndmonitor \
+    libspkrprot \
     libvolumelistener
 
 # Audio configs
@@ -118,7 +123,9 @@ PRODUCT_PACKAGES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.0.vendor \
+    android.hardware.bluetooth@1.1.vendor \
+    libldacBT_enc \
+    libldacBT_abr \
     vendor.qti.hardware.btconfigstore@1.0.vendor \
     vendor.qti.hardware.btconfigstore@2.0.vendor
 
@@ -149,6 +156,8 @@ PRODUCT_COPY_FILES += \
 
 # Display
 PRODUCT_PACKAGES += \
+    android.hardware.graphics.common-V1-ndk_platform \
+    android.hardware.graphics.common-V1-ndk_platform.vendor \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
     vendor.qti.hardware.display.allocator-service \
@@ -169,10 +178,18 @@ PRODUCT_PACKAGES += \
     libgralloc.qti \
     libqdMetaData \
     libqdMetaData.system \
+    libqdutils \
+    libqservice \
     libtinyxml \
+    vendor.display.config@1.16 \
+    vendor.display.config@1.11.vendor \
     vendor.display.config@2.0 \
+    vendor.display.config@2.0.vendor \
     vendor.qti.hardware.display.mapper@1.1.vendor \
-    vendor.qti.hardware.display.mapper@2.0.vendor
+    vendor.qti.hardware.display.mapper@2.0.vendor \
+    vendor.qti.hardware.display.mapper@3.0.vendor \
+    vendor.qti.hardware.display.mapper@4.0.vendor \
+    vendor.qti.hardware.display.mapperextensions@1.3.vendor
 
 # Doze
 PRODUCT_PACKAGES += \
@@ -187,7 +204,8 @@ PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey
 
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.3.vendor
+    android.hardware.drm@1.3.vendor \
+    libdrm.vendor
 
 # Fingerprint
 PRODUCT_PACKAGES += \
@@ -296,7 +314,8 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light-service.xiaomi_sdm660
+    android.hardware.light-service.xiaomi_sdm660 \
+    lights.sdm660
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
@@ -327,11 +346,16 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video_le.xml
 
+PRODUCT_PACKAGES += \
+    libmediaplayerservice
+
 # Media C2
 PRODUCT_PACKAGES += \
     android.hardware.media.c2@1.2.vendor \
     libcodec2_hidl@1.0.vendor \
-    libcodec2_vndk.vendor
+    libcodec2_vndk.vendor \
+    libgui_vendor \
+    libsfplugin_ccodec_utils.vendor
 
 PRODUCT_PACKAGES += \
     libcodec2_soft_avcdec \
@@ -354,6 +378,7 @@ PRODUCT_PACKAGES += \
 
 # Netd
 PRODUCT_PACKAGES += \
+    android.system.net.netd@1.1 \
     android.system.net.netd@1.1.vendor
 
 # OMX
@@ -369,6 +394,7 @@ PRODUCT_PACKAGES += \
     libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVenc \
+    libstagefright_softomx.vendor \
     libstagefrighthw
 
 # Overlays
@@ -421,6 +447,7 @@ PRODUCT_COPY_FILES += \
 
 # RIL
 PRODUCT_PACKAGES += \
+    libavservices_minijail \
     libavservices_minijail.vendor \
     libprotobuf-cpp-full \
     librmnetctl \
@@ -431,6 +458,7 @@ PRODUCT_PACKAGES += \
     android.hardware.radio@1.5.vendor \
     android.hardware.radio.config@1.2 \
     android.hardware.radio.config@1.2.vendor \
+    android.hardware.radio.deprecated@1.0 \
     android.hardware.radio.deprecated@1.0.vendor \
     android.hardware.secure_element@1.2 \
     android.hardware.secure_element@1.2.vendor \
@@ -491,6 +519,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
     hostapd \
+    hostapd_cli \
     libwifi-hal-qcom \
     libwpa_client \
     WifiOverlay \

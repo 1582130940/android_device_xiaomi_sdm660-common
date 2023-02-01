@@ -82,6 +82,14 @@
             <instance>qccsyshal</instance>
         </interface>
     </hal>
+    <hal format="hidl" optional="true">
+        <name>com.qualcomm.qti.uceservice</name>
+        <version>2.0-3</version>
+        <interface>
+            <name>IUceService</name>
+            <instance>com.qualcomm.qti.uceservice</instance>
+        </interface>
+    </hal>
     <hal format="native" optional="false">
         <name>netutils-wrapper</name>
         <!--

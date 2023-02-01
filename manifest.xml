@@ -62,7 +62,7 @@
     <hal format="hidl">
         <name>android.hardware.radio.config</name>
         <transport>hwbinder</transport>
-        <fqname>@1.2::IRadioConfig/default</fqname>
+        <fqname>@1.1::IRadioConfig/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.sensors</name>
@@ -116,11 +116,6 @@
         <fqname>@2.2::IImsCmService/qti.ims.connectionmanagerservice</fqname>
     </hal>
     <hal format="hidl">
-        <name>vendor.qti.ims.factory</name>
-        <transport>hwbinder</transport>
-        <fqname>@1.0::IImsFactory/default</fqname>
-   </hal>
-    <hal format="hidl">
         <name>com.qualcomm.qti.uceservice</name>
         <transport>hwbinder</transport>
         <fqname>@2.3::IUceService/com.qualcomm.qti.uceservice</fqname>
@@ -128,7 +123,7 @@
     <hal format="hidl">
         <name>vendor.display.color</name>
         <transport>hwbinder</transport>
-        <fqname>@1.0::IDisplayColor/default</fqname>
+        <fqname>@1.2::IDisplayColor/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.display.config</name>
@@ -150,12 +145,12 @@
     <hal format="hidl">
         <name>vendor.qti.data.factory</name>
         <transport>hwbinder</transport>
-        <fqname>@2.2::IFactory/default</fqname>
+        <fqname>@2.3::IFactory/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.esepowermanager</name>
         <transport>hwbinder</transport>
-        <fqname>@1.0::IEsePowerManager/default</fqname>
+        <fqname>@1.1::IEsePowerManager/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.gnss</name>
@@ -175,12 +170,12 @@
     <hal format="hidl">
         <name>vendor.qti.hardware.bluetooth_audio</name>
         <transport>hwbinder</transport>
-        <fqname>@2.0::IBluetoothAudioProvidersFactory/default</fqname>
+        <fqname>@2.1::IBluetoothAudioProvidersFactory/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.bluetooth_sar</name>
         <transport>hwbinder</transport>
-        <fqname>@1.0::IBluetoothSar/default</fqname>
+        <fqname>@1.1::IBluetoothSar/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.btconfigstore</name>
@@ -188,9 +183,9 @@
         <fqname>@2.0::IBTConfigStore/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>vendor.qti.hardware.cacert</name>
+        <name>vendor.qti.hardware.capabilityconfigstore</name>
         <transport>hwbinder</transport>
-        <fqname>@1.0::IService/default</fqname>
+        <fqname>@1.0::ICapabilityConfigStore/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.data.connection</name>
@@ -208,6 +203,11 @@
         <name>vendor.qti.hardware.data.latency</name>
         <transport>hwbinder</transport>
         <fqname>@1.0::ILinkLatency/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.dsp</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.0::IDspService/dspservice</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.factory</name>
@@ -244,14 +244,19 @@
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.ims</name>
         <transport>hwbinder</transport>
-        <fqname>@1.6::IImsRadio/imsradio0</fqname>
-        <fqname>@1.6::IImsRadio/imsradio1</fqname>
+        <fqname>@1.8::IImsRadio/imsradio0</fqname>
+        <fqname>@1.8::IImsRadio/imsradio1</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.radio.internal.deviceinfo</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.0::IDeviceInfo/deviceinfo</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.lpa</name>
         <transport>hwbinder</transport>
-        <fqname>@1.0::IUimLpa/UimLpa0</fqname>
-        <fqname>@1.0::IUimLpa/UimLpa1</fqname>
+        <fqname>@1.2::IUimLpa/UimLpa0</fqname>
+        <fqname>@1.2::IUimLpa/UimLpa1</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.qcrilhook</name>
@@ -305,9 +310,9 @@
         <fqname>@1.0::IService/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>vendor.qti.hardware.radio.internal.deviceinfo</name>
+        <name>vendor.qti.ims.factory</name>
         <transport>hwbinder</transport>
-        <fqname>@1.0::IDeviceInfo/deviceinfo</fqname>
+        <fqname>@1.1::IImsFactory/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.imsrtpservice</name>

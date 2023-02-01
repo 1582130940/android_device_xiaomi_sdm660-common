@@ -5,6 +5,9 @@ audio_hal.in_period_size                u:object_r:vendor_default_prop:s0
 audio_hal.period_multiplier             u:object_r:vendor_default_prop:s0
 persist.audio.fluence.voicecomm         u:object_r:vendor_default_prop:s0
 
+# Bluetooth
+ro.hsm.model.num                        u:object_r:hal_bluetooth_qti_prop:s0
+
 # Camera
 camera.                                 u:object_r:camera_prop:s0
 camera.clientname                       u:object_r:camera_prop:s0
@@ -59,4 +62,11 @@ persist.sys.thermal.                    u:object_r:thermal_engine_prop:s0
 sys.thermal.                            u:object_r:thermal_engine_prop:s0
 
 # Wlan
+persist.vendor.iwlan.logging.logcat     u:object_r:vendor_cnd_vendor_prop:s0
 persist.vendor.wigig.npt.enable         u:object_r:vendor_default_prop:s0
+ro.hon.plat.imager.sensor               u:object_r:vendor_wcnss_service_prop:s0
+ro.hsm.board.variant                    u:object_r:vendor_wcnss_service_prop:s0
+ro.hsm.pcb.vendor                       u:object_r:vendor_wcnss_service_prop:s0
+ro.hsm.som.variant                      u:object_r:vendor_wcnss_service_prop:s0
+ro.hsm.wifi.bdf.tag                     u:object_r:vendor_wcnss_service_prop:s0
+vendor.wlan.bdf.path                    u:object_r:vendor_wcnss_service_prop:s0

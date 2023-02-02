@@ -1,12 +1,11 @@
 #
-# Copyright (C) 2018 The LineageOS Project
-#
+# SPDX-FileCopyrightText: 2018-2024 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 #
 
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter jasmine_sprout jason lavender platina twolip wayne whyred,$(TARGET_DEVICE)),)
+ifneq ($(filter clover jasmine_sprout jason lavender platina twolip wayne whyred,$(TARGET_DEVICE)),)
 
 include $(CLEAR_VARS)
 

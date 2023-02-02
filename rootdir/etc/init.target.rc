@@ -198,7 +198,7 @@ service vendor.sensors.qti /vendor/bin/sensors.qti
 service vendor.pd_mapper /system/vendor/bin/pd-mapper
      class core
 
-service dcvs-sh /vendor/bin/init.qti.dcvs.sh
+service vendor.dcvs-sh /vendor/bin/init.qti.dcvs.sh
     class late_start
     user root
     group root system
@@ -206,7 +206,7 @@ service dcvs-sh /vendor/bin/init.qti.dcvs.sh
     oneshot
 
 on property:vendor.dcvs.prop=1
-   start dcvs-sh
+   start vendor.dcvs-sh
 
 service ppd /system/vendor/bin/mm-pp-dpps
     class late_start
@@ -234,13 +234,13 @@ on property:init.svc.zygote=restarting
     stop ppd
 
 on charger
-    start qcom-post-boot
+    start vendor.qcom-post-boot
     start vendor.hvdcp_opti
     setprop vendor.usb.controller a800000.dwc3
     setprop sys.usb.configfs 1
     start vendor.power_off_alarm
 
 service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
-     class main
-     user root
-     group system wakelock
+    class main
+    user root
+    group system wakelock

@@ -1,6 +1,5 @@
 #
-# Copyright (C) 2018 The LineageOS Project
-#
+# SPDX-FileCopyrightText: 2018-2024 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 #
 
@@ -37,9 +36,12 @@ BOARD_BOOT_HEADER_VERSION := 1
 BOARD_KERNEL_CMDLINE := \
     androidboot.boot_devices=soc/c0c4000.sdhci \
     androidboot.configfs=true \
+    androidboot.console=ttyMSM0 \
     androidboot.hardware=qcom \
     androidboot.init_fatal_reboot_target=recovery \
     androidboot.usbcontroller=a800000.dwc3 \
+    console=ttyMSM0,115200,n8 \
+    earlycon=msm_serial_dm,0xc170000 \
     ehci-hcd.park=3 \
     loop.max_part=7 \
     lpm_levels.sleep_disabled=1 \
@@ -52,10 +54,9 @@ BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_SOURCE := kernel/xiaomi/sdm660
-TARGET_KERNEL_CONFIG := vendor/xiaomi/sdm660_defconfig vendor/debugfs.config
 TARGET_KERNEL_VERSION := 4.19
 
-# QCOM hardware
+# QCOM
 BOARD_USES_QCOM_HARDWARE := true
 
 # ANT+
@@ -64,8 +65,9 @@ BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 BOARD_SUPPORTS_SOUND_TRIGGER := true
-AUDIO_FEATURE_ENABLED_GEF_SUPPORT := true
 AUDIO_FEATURE_ENABLED_EXT_AMPLIFIER := false
+AUDIO_FEATURE_ENABLED_GEF_SUPPORT := true
+AUDIO_FEATURE_ENABLED_SVA_MULTI_STAGE := true
 
 # Camera
 TARGET_USES_QTI_CAMERA_DEVICE := true
@@ -99,14 +101,14 @@ TARGET_INIT_VENDOR_LIB := //$(COMMON_PATH):libinit_sdm660
 TARGET_RECOVERY_DEVICE_MODULES := libinit_sdm660
 
 # Partitions
-BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
+BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x04000000
 ifneq ($(AB_OTA_UPDATER), true)
-BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x04000000
 endif
-BOARD_SYSTEMIMAGE_PARTITION_TYPE := ext4
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 
 BOARD_ROOT_EXTRA_SYMLINKS := \
@@ -127,6 +129,9 @@ TARGET_PRODUCT_PROP += $(COMMON_PATH)/product.prop
 TARGET_SYSTEM_PROP += $(COMMON_PATH)/system.prop
 TARGET_VENDOR_PROP += $(COMMON_PATH)/vendor.prop
 
+# Releasetools
+TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)
+
 # SELinux
 include device/qcom/sepolicy-legacy-um/SEPolicy.mk
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
@@ -141,7 +146,7 @@ BOARD_VNDK_VERSION := current
 # Only needed for signing
 BOARD_AVB_ENABLE := false
 
-# Wifi
+# WiFi
 BOARD_WLAN_DEVICE := qcwcn
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)

@@ -1,0 +1,14 @@
+allow untrusted_app block_device:dir search;
+allow untrusted_app firmware_file:dir getattr;
+allow untrusted_app firmware_file:filesystem getattr;
+allow untrusted_app proc_kmsg:file getattr;
+allow untrusted_app proc_keys:file getattr;
+allow untrusted_app proc_modules:file read;
+allow untrusted_app proc_swaps:file getattr;
+allow untrusted_app rootfs:dir { read open };
+allow untrusted_app sysfs:dir { read open };
+allow untrusted_app sysfs_kgsl:lnk_file read;
+allow untrusted_app wifi_hal_prop:file read;
+
+get_prop(untrusted_app, aac_drc_prop)
+get_prop(untrusted_app, ab_update_gki_prop)

@@ -37,8 +37,11 @@ BOARD_BOOT_HEADER_VERSION := 1
 BOARD_KERNEL_CMDLINE := \
     androidboot.boot_devices=soc/c0c4000.sdhci \
     androidboot.configfs=true \
+    androidboot.console=ttyMSM0 \
     androidboot.hardware=qcom \
     androidboot.usbcontroller=a800000.dwc3 \
+    console=ttyMSM0,115200,n8 \
+    earlycon=msm_serial_dm,0xc170000 \
     ehci-hcd.park=3 \
     loop.max_part=7 \
     lpm_levels.sleep_disabled=1 \
@@ -52,10 +55,9 @@ BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_SOURCE := kernel/xiaomi/sdm660
-TARGET_KERNEL_CONFIG := vendor/xiaomi/sdm660_defconfig
 TARGET_KERNEL_VERSION := 4.19
 
-# QCOM hardware
+# QCOM
 BOARD_USES_QCOM_HARDWARE := true
 
 # ANT+
@@ -96,14 +98,14 @@ TARGET_INIT_VENDOR_LIB := //$(COMMON_PATH):libinit_sdm660
 TARGET_RECOVERY_DEVICE_MODULES := libinit_sdm660
 
 # Partitions
-BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
+BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x04000000
 ifneq ($(AB_OTA_UPDATER), true)
-BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x04000000
 endif
-BOARD_SYSTEMIMAGE_PARTITION_TYPE := ext4
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 
 BOARD_ROOT_EXTRA_SYMLINKS := \
@@ -129,12 +131,11 @@ include device/qcom/sepolicy-legacy-um/SEPolicy.mk
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 PRODUCT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
 PRODUCT_PUBLIC_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/public
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 # Treble
 BOARD_VNDK_VERSION := current
 
-# Wifi
+# WiFi
 BOARD_WLAN_DEVICE := qcwcn
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)

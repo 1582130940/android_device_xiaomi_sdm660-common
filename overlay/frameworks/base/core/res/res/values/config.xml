@@ -163,6 +163,9 @@
          rotations as the default behavior. -->
     <bool name="config_allowAllRotations">true</bool>
 
+    <!-- Enable lockscreen rotation by default -->
+    <bool name="config_enableLockScreenRotation">true</bool>
+
     <!-- Whether camera shutter sound is forced or not  (country specific). -->
     <bool name="config_camera_sound_forced">false</bool>
 
@@ -231,9 +234,6 @@
         autodetected from the Configuration. -->
     <!-- <bool name="config_showNavigationBar">true</bool> -->
 
-    <!-- Boolean indicating if current platform supports HFP inband ringing -->
-    <bool name="config_bluetooth_hfp_inband_ringing_support">true</bool>
-
     <!-- Enable doze mode -->
     <string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>
     <!-- Screen brightness when dozing. -->
@@ -243,14 +243,18 @@
     <!-- The name of the package that will hold the dialer role by default. -->
     <!-- <string name="config_defaultDialer" translatable="false">org.codeaurora.dialer</string> -->
 
-   <!-- The duration (in milliseconds) for the outgoing sms authorization request to timeout.-->
-   <integer name="config_sms_authorization_timeout_ms">15000</integer>
-   <!-- Enable SMS authorization support -->
-   <bool name="config_sms_authorization_enabled">true</bool>
-
    <!-- When true use the linux /dev/input/event subsystem to detect the switch changes
    on the headphone/microphone jack. When false use the older uevent framework -->
    <bool name="config_useDevInputEventForAudioJack">true</bool>
+
+    <!-- Default value for led color when battery is low on charge -->
+    <integer name="config_notificationsBatteryLowARGB">0xFFFFFFFF</integer>
+
+    <!-- Default value for led color when battery is medium charged -->
+    <integer name="config_notificationsBatteryMediumARGB">0xFFFFFFFF</integer>
+
+    <!-- Default value for led color when battery is fully charged -->
+    <integer name="config_notificationsBatteryFullARGB">0xFFFFFFFF</integer>
 
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveNotificationLed">true</bool>

@@ -6,7 +6,7 @@
 
 on init
     chown system system /dev/goodix_fp
-    chmod 0644 /dev/goodix_fp
+    chmod 0777 /dev/goodix_fp
 
     chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/irq
     chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/irq_enable
@@ -17,11 +17,11 @@ on init
     chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/vendor
     chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/proximity_state
     chown system system /sys/bus/platform/devices/soc:fingerprint_goodix/proximity_state
-    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/irq
-    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/wakeup_enable
-    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/hw_reset
-    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/device_prepare
-    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/vendor
+    chmod 0660 /sys/bus/platform/devices/soc:fingerprint_fpc/irq
+    chmod 0660 /sys/bus/platform/devices/soc:fingerprint_fpc/wakeup_enable
+    chmod 0660 /sys/bus/platform/devices/soc:fingerprint_fpc/hw_reset
+    chmod 0660 /sys/bus/platform/devices/soc:fingerprint_fpc/device_prepare
+    chmod 0660 /sys/bus/platform/devices/soc:fingerprint_fpc/vendor
 
     chown system system /sys/bus/platform/devices/soc:fpc1020/irq
     chown system system /sys/bus/platform/devices/soc:fpc1020/irq_enable
@@ -32,12 +32,24 @@ on init
     chown system system /sys/bus/platform/devices/soc:fpc1020/vendor
     chown system system /sys/bus/platform/devices/soc:fpc1020/proximity_state
     chown system system /sys/bus/platform/devices/soc:goodix_fp/proximity_state
-    chmod 0700 /sys/bus/platform/devices/soc:fpc1020/irq
-    chmod 0700 /sys/bus/platform/devices/soc:fpc1020/wakeup_enable
-    chmod 0700 /sys/bus/platform/devices/soc:fpc1020/hw_reset
-    chmod 0700 /sys/bus/platform/devices/soc:fpc1020/device_prepare
-    chmod 0700 /sys/bus/platform/devices/soc:fpc1020/vendor
+    chmod 0660 /sys/bus/platform/devices/soc:fpc1020/irq
+    chmod 0660 /sys/bus/platform/devices/soc:fpc1020/wakeup_enable
+    chmod 0660 /sys/bus/platform/devices/soc:fpc1020/hw_reset
+    chmod 0660 /sys/bus/platform/devices/soc:fpc1020/device_prepare
+    chmod 0660 /sys/bus/platform/devices/soc:fpc1020/vendor
+
+    chown system system /sys/bus/platform/devices/soc:fpc1020/clk_enable
+    chown system system /sys/bus/platform/devices/soc:fpc1020/compatible_all
+    chown system system /sys/bus/platform/devices/soc:fpc1020/modalias
+    chown system system /sys/bus/platform/devices/soc:fpc1020/regulator_enable
+    chmod 0660 /sys/bus/platform/devices/soc:fpc1020/clk_enable
+    chmod 0660 /sys/bus/platform/devices/soc:fpc1020/compatible_all
+    chmod 0660 /sys/bus/platform/devices/soc:fpc1020/modalias
+    chmod 0660 /sys/bus/platform/devices/soc:fpc1020/regulator_enable
 
 on post-fs-data
-    mkdir /data/vendor/fpc 0770 system system
-    mkdir /data/vendor/goodix 0770 system system
+    mkdir /data/misc/fpc 0777 system system
+    mkdir /data/misc/goodix 0777 system system
+    mkdir /data/vendor/fpc 0777 system system
+    mkdir /data/vendor/goodix 0777 system system
+    mkdir /persist/fpc 0777 system system

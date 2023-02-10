@@ -27,6 +27,8 @@
 #
 #
 
+import /vendor/etc/init/hw/init.target_ota.rc
+
 on init
     write /dev/stune/foreground/schedtune.sched_boost_no_override 1
     write /dev/stune/top-app/schedtune.sched_boost_no_override 1
@@ -35,37 +37,37 @@ on init
     write /dev/stune/system-background/schedtune.colocate 0
     write /dev/stune/foreground/schedtune.colocate 0
     write /dev/stune/top-app/schedtune.colocate 1
-
-on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
-    mount_all /vendor/etc/fstab.qcom
-    swapon_all /vendor/etc/fstab.qcom
-    chown root system /mnt/vendor/persist
-    chmod 0771 /mnt/vendor/persist
-    mkdir /mnt/vendor/persist/data 0700 system system
-    mkdir /mnt/vendor/persist/bms 0700 root system
-    restorecon_recursive /mnt/vendor/persist
-    write /sys/kernel/boot_adsp/boot 1
+    start vendor.qseecomd
+    start keymaster-4-0
 
+on early-fs
+    start vold
+
+on fs
     mkdir /mnt/vendor/dsp 0770 root root
     copy /vendor/dsp/cdsp/fastrpc_shell_3 /mnt/vendor/dsp/fastrpc_shell_3
     chmod 0644 /mnt/vendor/dsp/fastrpc_shell_3
     mount none /mnt/vendor/dsp/fastrpc_shell_3 /vendor/dsp/cdsp/fastrpc_shell_3 bind
 
 on post-fs
-    start vendor.qseecomd
-    wait_for_prop vendor.sys.listeners.registered true
     write /dev/ipa 1
 
 on init
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
 on post-fs-data
-    mkdir /data/tombstones/modem 0771 system system
-    mkdir /data/tombstones/lpass 0771 system system
-    mkdir /data/tombstones/wcnss 0771 system system
-    mkdir /data/tombstones/dsps 0771 system system
+    mkdir /data/vendor/tombstones/modem 0771 system system
+    mkdir /data/vendor/tombstones/lpass 0771 system system
+    mkdir /data/vendor/tombstones/wcnss 0771 system system
+    mkdir /data/vendor/tombstones/dsps 0771 system system
+
+on early-boot
+    chown system system /mnt/vendor/persist/sensors
+    chown system system /mnt/vendor/persist/sensors/sns.reg
+    chown system system /mnt/vendor/persist/sensors/sensors_settings
+    chmod 0664 /mnt/vendor/persist/sensors/sensors_settings
 
 on boot
     start vendor.rmt_storage
@@ -116,6 +118,7 @@ on boot && property:persist.vendor.usb.controller.default=*
 
 on property:vendor.usb.controller=*
     setprop sys.usb.controller ${vendor.usb.controller}
+    write /sys/module/usb_f_qcrndis/parameters/rndis_dl_max_xfer_size 15916
 
     # Touchpanel
     chown system system /sys/touchpanel/double_tap
@@ -149,7 +152,6 @@ on property:sys.shutdown.requested=*
 #
 #on property:persist.usb.chgdisabled=0
 #    write /sys/class/power_supply/battery/charging_enabled 1
-
 service vendor.qseecomd /vendor/bin/qseecomd
    class core
    user root
@@ -180,18 +182,10 @@ service vendor.cdsprpcd /vendor/bin/cdsprpcd
    group system
    disabled
 
-#on boot
-#    insmod /system/lib/modules/adsprpc.ko
-#    insmod /system/lib/modules/mhi.ko
-## access permission for secure touch
-#    chmod 0660 /sys/devices/f9966000.i2c/i2c-1/1-004a/secure_touch_enable
-#    chmod 0440 /sys/devices/f9966000.i2c/i2c-1/1-004a/secure_touch
-#    chmod 0660 /sys/devices/f9966000.i2c/i2c-1/1-0020/secure_touch_enable
-#    chmod 0440 /sys/devices/f9966000.i2c/i2c-1/1-0020/secure_touch
-#    chown system drmrpc /sys/devices/f9966000.i2c/i2c-1/1-004a/secure_touch_enable
-#    chown system drmrpc /sys/devices/f9966000.i2c/i2c-1/1-004a/secure_touch
-#    chown system drmrpc /sys/devices/f9966000.i2c/i2c-1/1-0020/secure_touch_enable
-#    chown system drmrpc /sys/devices/f9966000.i2c/i2c-1/1-0020/secure_touch
+service vendor.sensors.qti /vendor/bin/sensors.qti
+    class core
+    user system
+    group system
 
 service vendor.pd_mapper /system/vendor/bin/pd-mapper
      class core
@@ -226,7 +220,7 @@ on charger
     start vendor.hvdcp_opti
     setprop vendor.usb.controller a800000.dwc3
     setprop sys.usb.configfs 1
-    start power_off_alarm
+    start vendor.power_off_alarm
 
 service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
      class main

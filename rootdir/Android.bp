@@ -59,6 +59,13 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
+    name: "init.target_ota.rc",
+    src: "etc/init.target_ota.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
     name: "ueventd.qcom.rc",
     filename: "ueventd.rc",
     src: "etc/ueventd.qcom.rc",

@@ -267,6 +267,7 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.recovery.qcom.rc \
     init.target.rc \
+    init.target_ota.rc \
     ueventd.qcom.rc
 
 # IPACM

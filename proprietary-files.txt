@@ -1,5 +1,6 @@
 # hon660 package version: 94.00.04, unless stated otherwise
 # lavender package version: V12.5.7.0.QFGCNXM, unless stated otherwise
+# psyche package version: V14.0.9.0.TLDCNXM, unless stated otherwise
 
 # ADSP - from hon660
 system_ext/lib/libadsprpc_system.so
@@ -337,6 +338,24 @@ vendor/bin/hw/vendor.qti.hardware.capabilityconfigstore@1.0-service
 vendor/etc/init/vendor.qti.hardware.capabilityconfigstore@1.0-service.rc
 vendor/lib64/hw/vendor.qti.hardware.capabilityconfigstore@1.0-impl.so
 
+# Dolby - from psyche
+system/lib/vendor.dolby.hardware.dms@2.0.so
+system/lib64/vendor.dolby.hardware.dms@2.0.so
+vendor/bin/hw/vendor.dolby.hardware.dms@2.0-service
+vendor/etc/init/vendor.dolby.hardware.dms@2.0-service.rc
+vendor/etc/vintf/manifest/manifest_vendor.dolby.hardware.dms.xml
+vendor/etc/media_codecs_dolby_audio.xml
+vendor/lib/libdapparamstorage.so
+vendor/lib/libdeccfg.so
+vendor/lib/libstagefrightdolby.so
+vendor/lib/vendor.dolby.hardware.dms@2.0.so
+vendor/lib64/libdapparamstorage.so
+vendor/lib64/libdeccfg.so
+vendor/lib64/libdlbdsservice.so
+vendor/lib64/libstagefrightdolby.so
+vendor/lib64/vendor.dolby.hardware.dms@2.0-impl.so
+vendor/lib64/vendor.dolby.hardware.dms@2.0.so
+
 # DPM - from LA.QSSI.13.0.r1-10000.02-qssi.0
 framework/tcmclient.jar
 system_ext/bin/dpmd
@@ -410,6 +429,11 @@ vendor/lib64/libtrustedapploader.so
 vendor/lib64/libtzdrmgenprov.so
 vendor/lib64/vendor.qti.hardware.qseecom@1.0.so
 vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so
+
+# DRM - from psyche
+vendor/lib64/liboemcrypto.so
+vendor/lib64/libops.so
+vendor/lib64/libspl.so
 
 # ESE - from hon660
 vendor/bin/hw/vendor.qti.esepowermanager@1.1-service
@@ -623,6 +647,14 @@ vendor/lib64/libmm-color-convertor.so
 vendor/lib64/libmmosal.so
 vendor/lib64/vendor.qti.hardware.vpp@1.1.so
 vendor/lib64/vendor.qti.hardware.vpp@1.2.so
+
+# Media - from psyche
+vendor/lib/libstagefright_soft_ac4dec.so
+vendor/lib/libstagefright_soft_ddpdec.so
+vendor/lib/libstagefright_soft_qtiflacdec.so
+vendor/lib64/libstagefright_soft_ac4dec.so
+vendor/lib64/libstagefright_soft_ddpdec.so
+vendor/lib64/libstagefright_soft_qtiflacdec.so
 
 # Mlipay - from lavender
 vendor/bin/mlipayd@1.1

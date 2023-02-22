@@ -1,5 +1,8 @@
+allow hal_audio_default hal_dms_hwservice:hwservice_manager find;
 allow hal_audio_default mnt_vendor_file:dir search;
 allow hal_audio_default persist_file:dir search;
 allow hal_audio_default sysfs:dir r_dir_perms;
+
+binder_call(hal_audio_default, hal_dms_default)
 
 get_prop(hal_audio_default, boot_status_prop)

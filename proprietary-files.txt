@@ -213,6 +213,10 @@ vendor/lib64/libsdedrm.so
 vendor/lib64/libsecureui_svcsock.so
 vendor/lib64/libssd.so
 
+# DRM - from alioth V14.0.4.0.TKHCNXM
+vendor/lib64/libops.so
+vendor/lib64/libspl.so
+
 # FM - from S62Pro
 vendor/lib64/vendor.qti.hardware.fm@1.0.so
 

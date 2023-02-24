@@ -293,7 +293,7 @@ PRODUCT_COPY_FILES += \
 # Media C2
 PRODUCT_PACKAGES += \
     libcodec2_vndk.vendor \
-    android.hardware.media.c2@1.0.vendor \
+    android.hardware.media.c2@1.2.vendor \
     libcodec2_hidl@1.0.vendor
 
 # Mlipay

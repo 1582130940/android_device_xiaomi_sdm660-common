@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2017 The Android Open Source Project
- * Copyright (C) 2018 The LineageOS Project
+ *               2022 The LineageOS Project
  *
  * SPDX-License-Identifier: Apache-2.0
  */

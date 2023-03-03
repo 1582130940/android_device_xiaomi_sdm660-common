@@ -48,8 +48,10 @@ class LEDBacklight : public BacklightDevice {
 };
 
 static const std::string kBacklightDevices[] = {
+#ifndef USE_LCD_BACKLIGHT_INTERFACE_ONLY
         "backlight",
         "panel0-backlight",
+#endif
 };
 
 static const std::string kLedDevices[] = {

@@ -2,6 +2,9 @@
 persist.vendor.dpm.feature=11
 persist.vendor.dpm.idletimer.mode=default
 
+# GPS
+persist.backup.ntpServer="0.pool.ntp.org"
+
 # Media
 media.settings.xml=/vendor/etc/media_profiles_vendor.xml
 media.stagefright.thumbnail.prefer_hw_codecs=true

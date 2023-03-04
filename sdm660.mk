@@ -250,6 +250,12 @@ PRODUCT_PACKAGES += \
     libgps.utils \
     libloc_core
 
+PRODUCT_PACKAGES += \
+    libgnsspps \
+    libsynergy_loc_api \
+    izat_remote_api_headers \
+    loc_sll_if_headers
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/apdr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/apdr.conf \
     $(LOCAL_PATH)/gps/etc/izat.conf:$(TARGET_COPY_OUT_VENDOR)/etc/izat.conf \

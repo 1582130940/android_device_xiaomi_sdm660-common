@@ -153,16 +153,6 @@
         <fqname>@1.1::IEsePowerManager/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>vendor.qti.gnss</name>
-        <transport>hwbinder</transport>
-        <fqname>@1.2::ILocHidlGnss/gnss_vendor</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.qti.gnss</name>
-        <transport>hwbinder</transport>
-        <fqname>@2.0::ILocHidlGnss/gnss_vendor</fqname>
-    </hal>
-    <hal format="hidl">
         <name>vendor.qti.hardware.alarm</name>
         <transport>hwbinder</transport>
         <fqname>@1.0::IAlarm/default</fqname>
@@ -218,6 +208,11 @@
         <name>vendor.qti.hardware.fm</name>
         <transport>hwbinder</transport>
         <fqname>@1.0::IFmHci/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.qccvndhal</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.0::IQccvndhal/qccvndhal</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.qdutils_disp</name>

@@ -1,6 +1,6 @@
 #! /vendor/bin/sh
 
-# Copyright (c) 2012-2013, 2016-2020, The Linux Foundation. All rights reserved.
+# Copyright (c) 2012-2013, 2016-2021, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -5431,12 +5431,6 @@ case "$target" in
     "qsd8250_surf" | "qsd8250_ffa" | "qsd8650a_st1x")
         echo 50000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
         ;;
-esac
-
-case "$target" in
-    "qsd8650a_st1x")
-        mount -t debugfs none /sys/kernel/debug
-    ;;
 esac
 
 chown -h system /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate

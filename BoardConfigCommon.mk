@@ -130,6 +130,11 @@ BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 # Treble
 BOARD_VNDK_VERSION := current
 
+# Trust
+TARGET_TRUST_USB_CONTROL_PATH := /sys/devices/platform/soc/a800000.ssusb/usb_data_enabled
+TARGET_TRUST_USB_CONTROL_ENABLE := 0
+TARGET_TRUST_USB_CONTROL_DISABLE := 1
+
 # Wifi
 BOARD_WLAN_DEVICE := qcwcn
 BOARD_HOSTAPD_DRIVER := NL80211

@@ -113,6 +113,7 @@ vidc.enc.dcvs.extra-buff-count=2
 
 # Display
 debug.cpurend.vsync=false
+debug.hwui.skia_atrace_enabled=false
 debug.sf.early.sf.duration=21000000
 debug.sf.early.app.duration=16500000
 debug.sf.earlyGl.sf.duration=13500000

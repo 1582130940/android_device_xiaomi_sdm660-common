@@ -26,10 +26,9 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-#Changes from Qualcomm Innovation Center are provided under the following license:
-#Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
-#SPDX-License-Identifier: BSD-3-Clause-Clear
-#
+# Changes from Qualcomm Innovation Center are provided under the following license:
+# Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause-Clear
 
 export PATH=/vendor/bin
 
@@ -235,9 +234,6 @@ case "$target" in
         # 196610 is decimal for 0x30002 to report version 3.2
         case "$soc_hwid" in
             294|295|296|297|298|313|353|354|363|364)
-                # Disable adsprpcd_sensorspd daemon
-                setprop vendor.fastrpc.disable.adsprpcd_sensorspd.daemon 1
-
                 setprop vendor.opengles.version 196610
                 if [ $soc_hwid = 354 ]
                 then
@@ -297,7 +293,6 @@ case "$target" in
     "kona")
         case "$soc_hwplatform" in
             *)
-                setprop vendor.media.target_variant "_kona"
                 if [ $fb_width -le 1600 ]; then
                     setprop vendor.display.lcd_density 560
                 else
@@ -469,6 +464,7 @@ case "$product" in
         *)
         ;;
 esac
+
 # Setup display nodes & permissions
 # HDMI can be fb1 or fb2
 # Loop through the sysfs nodes and determine

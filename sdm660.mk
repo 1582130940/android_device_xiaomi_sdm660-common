@@ -79,7 +79,7 @@ PRODUCT_PACKAGES += \
     android.hardware.soundtrigger@2.3-impl
 
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.bluetooth_audio@2.0.vendor
+    vendor.qti.hardware.bluetooth_audio@2.1.vendor
 
 PRODUCT_PACKAGES += \
     audio.bluetooth.default \
@@ -112,6 +112,7 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     libsndmonitor \
     libspkrprot \
+    libssrec \
     libvolumelistener
 
 AUDIO_HAL_DIR := hardware/qcom-caf/sdm660/audio
@@ -215,6 +216,7 @@ TARGET_VNDK_USE_CORE_VARIANT := true
 
 # Display
 PRODUCT_PACKAGES += \
+    android.hardware.graphics.common@1.2.vendor \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
     vendor.qti.hardware.display.allocator@1.0.vendor \
@@ -237,6 +239,7 @@ PRODUCT_PACKAGES += \
     android.frameworks.displayservice@1.0.vendor \
     disable_configstore \
     libdisplayconfig \
+    libdisplayconfig.system.qti \
     libgralloc.qti \
     libqdMetaData \
     libqdMetaData.system \
@@ -265,6 +268,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.4.vendor \
+    libdrm \
     libdrm.vendor
 
 # Fingerprint
@@ -430,6 +434,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.media.c2@1.2.vendor \
     libcodec2_hidl@1.2.vendor \
+    libcodec2_soft_common.vendor \
     libcodec2_vndk.vendor \
     libgui_vendor \
     libsfplugin_ccodec_utils.vendor
@@ -481,8 +486,11 @@ PRODUCT_PACKAGES += \
 
 # OMX
 PRODUCT_PACKAGES += \
+    android.hardware.media.omx@1.0.vendor \
+    android.hardware.media.omx@1.0-service \
     libc2dcolorconvert \
     libhypv_intercept \
+    libmedia_omx.vendor \
     libmm-omxcore \
     libOmxCore \
     libOmxAacEnc \
@@ -493,7 +501,16 @@ PRODUCT_PACKAGES += \
     libOmxVdec \
     libOmxVenc \
     libOmxVidcCommon \
+    libstagefright_amrnb_common.vendor \
+    libstagefright_bufferpool@2.0.1.vendor \
+    libstagefright_bufferqueue_helper.vendor \
+    libstagefright_enc_common.vendor \
+    libstagefright_flacdec.vendor \
+    libstagefright_foundation.vendor \
+    libstagefright_omx.vendor \
+    libstagefright_omx_utils.vendor \
     libstagefright_softomx.vendor \
+    libstagefright_xmlparser.vendor \
     libstagefrighthw
 
 # Overlays
@@ -535,6 +552,7 @@ PRODUCT_COPY_FILES += \
 # QMI
 PRODUCT_PACKAGES += \
     libjson \
+    libjsoncpp \
     libqti_vndfwk_detect \
     libqti_vndfwk_detect.vendor \
     libvndfwk_detect_jni.qti \
@@ -620,12 +638,16 @@ PRODUCT_PACKAGES += \
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
+    android.hardware.wifi.hostapd@1.3.vendor \
     android.hardware.wifi@1.0-service \
     hostapd \
     hostapd_cli \
     libwifi-hal-qcom \
     libwpa_client \
+    vendor.qti.hardware.wifi.hostapd@1.3.vendor \
+    vendor.qti.hardware.wifi.supplicant@2.3.vendor \
     WifiOverlay \
+    wificond \
     wpa_supplicant \
     wpa_supplicant.conf
 
@@ -633,6 +655,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
+
+# WiFi Display
+PRODUCT_PACKAGES += \
+    libnl \
+    libwfdaac_vendor
 
 # Inherit the proprietary files
 $(call inherit-product, vendor/xiaomi/sdm660-common/sdm660-common-vendor.mk)

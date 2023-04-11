@@ -39,6 +39,8 @@ case "$baseband" in
     "apq" | "sda" | "qcs" )
     setprop ro.vendor.radio.noril yes
     stop vendor.qcrild
+    stop vendor.qcrild2
+    stop vendor.qcrild3
 esac
 
 case "$baseband" in

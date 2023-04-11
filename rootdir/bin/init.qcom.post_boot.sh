@@ -1,6 +1,6 @@
 #! /vendor/bin/sh
 
-# Copyright (c) 2012-2013, 2016-2020, The Linux Foundation. All rights reserved.
+# Copyright (c) 2012-2013, 2016-2021, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -27,9 +27,8 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 # Changes from Qualcomm Innovation Center are provided under the following license:
-# Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+# Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause-Clear
-#
 
 function 8953_sched_dcvs_eas()
 {
@@ -215,6 +214,12 @@ function configure_automotive_sku_parameters() {
     echo 1612800000 > /sys/class/devfreq/soc\:qcom,cpu0-cpu-l3-lat/max_freq
     echo 1612800000 > /sys/class/devfreq/soc\:qcom,cpu4-cpu-l3-lat/max_freq
     echo 1612800000 > /sys/class/devfreq/soc\:qcom,cpu7-cpu-l3-lat/max_freq
+    echo 902400  > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:silver/min_freq
+    echo 902400  > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:gold/min_freq
+    echo 902400  > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:prime/min_freq
+    echo 1612800 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:silver/max_freq
+    echo 1612800 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:gold/max_freq
+    echo 1612800 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:prime/max_freq
 
 #read feature id from nvram
 reg_val=`cat /sys/devices/platform/soc/780130.qfprom/qfprom0/nvmem | od -An -t d4`
@@ -246,6 +251,10 @@ function configure_automotive_sku_parameters_sa8195() {
         echo 940800000  > /sys/class/devfreq/soc\:qcom,cpu4-cpu-l3-lat/min_freq
         echo 1651200000 > /sys/class/devfreq/soc\:qcom,cpu0-cpu-l3-lat/max_freq
 	echo 1651200000 > /sys/class/devfreq/soc\:qcom,cpu4-cpu-l3-lat/max_freq
+	echo 940800  > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:gold/min_freq
+        echo 940800  > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:silver/min_freq
+        echo 1651200 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:gold/max_freq
+	echo 1651200 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:silver/max_freq
 
 	#read feature id
         reg_val=`cat /sys/devices/platform/soc/780130.qfprom/qfprom0/nvmem | od -An -t d4`
@@ -301,10 +310,40 @@ if [ $feature_id == 6 ]; then
 	echo 1017600000 > /sys/class/devfreq/soc\:qcom,cpu0-cpu-l3-lat/max_freq
 	echo 940800000 > /sys/class/devfreq/soc\:qcom,cpu6-cpu-l3-lat/min_freq
 	echo 1017600000 > /sys/class/devfreq/soc\:qcom,cpu6-cpu-l3-lat/max_freq
+	echo 940800000 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:silver
+	echo 1017600000 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:gold
+	echo 940800000 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:silver
+	echo 1017600000 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:gold
 	echo 3 > /sys/class/kgsl/kgsl-3d0/max_pwrlevel
 	echo 1016 > /sys/devices/platform/soc/soc:aop-set-ddr-freq/set_ddr_capped_freq
 	setprop vendor.sku_identified 1
 	setprop vendor.sku_name "SA6145"
+elif [ $feature_id == 7 ]; then
+    echo "SKU Configured : SA4150P"
+    echo 576000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    echo 576000 > /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
+    echo 576000 > /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq
+    echo 576000 > /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq
+    echo 576000 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
+    echo 576000 > /sys/devices/system/cpu/cpu5/cpufreq/scaling_max_freq
+    echo 768000 > /sys/devices/system/cpu/cpu6/cpufreq/scaling_max_freq
+    echo 768000 > /sys/devices/system/cpu/cpu7/cpufreq/scaling_max_freq
+    echo 940800000 > /sys/class/devfreq/18321110.qcom,cpu0-cpu-l3-lat/min_freq
+    echo 1017600000 > /sys/class/devfreq/18321110.qcom,cpu0-cpu-l3-lat/max_freq
+    echo 940800000 > /sys/class/devfreq/18321110.qcom,cpu6-cpu-l3-lat/min_freq
+    echo 1017600000 > /sys/class/devfreq/18321110.qcom,cpu6-cpu-l3-lat/max_freq
+    echo 940800000 > /sys/class/devfreq/soc\:qcom,cpu0-cpu-l3-lat/min_freq
+    echo 1017600000 > /sys/class/devfreq/soc\:qcom,cpu0-cpu-l3-lat/max_freq
+    echo 940800000 > /sys/class/devfreq/soc\:qcom,cpu6-cpu-l3-lat/min_freq
+    echo 1017600000 > /sys/class/devfreq/soc\:qcom,cpu6-cpu-l3-lat/max_freq
+    echo 940800000 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:silver
+    echo 1017600000 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:gold
+    echo 940800000 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:silver
+    echo 1017600000 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:gold
+    echo 4 > /sys/class/kgsl/kgsl-3d0/max_pwrlevel
+    echo 1016 > /sys/devices/platform/soc/soc:aop-set-ddr-freq/set_ddr_capped_freq
+    setprop vendor.sku_identified 1
+    setprop vendor.sku_name "SA4150P"
 elif [ $feature_id == 5 ]; then
 	echo "SKU Configured : SA6150"
 	echo 998400 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
@@ -323,6 +362,10 @@ elif [ $feature_id == 5 ]; then
 	echo 1363200000 > /sys/class/devfreq/soc\:qcom,cpu0-cpu-l3-lat/max_freq
 	echo 940800000 > /sys/class/devfreq/soc\:qcom,cpu6-cpu-l3-lat/min_freq
 	echo 1363200000 > /sys/class/devfreq/soc\:qcom,cpu6-cpu-l3-lat/max_freq
+        echo 940800000 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:silver
+        echo 1363200000 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:gold
+        echo 940800000 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:silver
+        echo 1363200000 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:gold
 	echo 2 > /sys/class/kgsl/kgsl-3d0/max_pwrlevel
 	echo 1333 > /sys/devices/platform/soc/soc:aop-set-ddr-freq/set_ddr_capped_freq
 	setprop vendor.sku_identified 1
@@ -345,6 +388,10 @@ elif [ $feature_id == 4 ] || [ $feature_id == 3 ]; then
 	echo 1363200000 > /sys/class/devfreq/soc\:qcom,cpu0-cpu-l3-lat/max_freq
 	echo 940800000 > /sys/class/devfreq/soc\:qcom,cpu6-cpu-l3-lat/min_freq
 	echo 1363200000 > /sys/class/devfreq/soc\:qcom,cpu6-cpu-l3-lat/max_freq
+        echo 940800000 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:silver
+        echo 1363200000 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:gold
+        echo 940800000 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:silver
+        echo 1363200000 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:gold
 	echo 0 > /sys/class/kgsl/kgsl-3d0/max_pwrlevel
 	echo 1555 > /sys/devices/platform/soc/soc:aop-set-ddr-freq/set_ddr_capped_freq
 	setprop vendor.sku_identified 1
@@ -367,6 +414,10 @@ else
 	echo 1363200000 > /sys/class/devfreq/soc\:qcom,cpu0-cpu-l3-lat/max_freq
 	echo 940800000 > /sys/class/devfreq/soc\:qcom,cpu6-cpu-l3-lat/min_freq
 	echo 1363200000 > /sys/class/devfreq/soc\:qcom,cpu6-cpu-l3-lat/max_freq
+        echo 940800000 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:silver
+        echo 1363200000 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:gold
+        echo 940800000 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:silver
+        echo 1363200000 > /sys/devices/system/cpu/bus_dcvs/L3/soc\:qcom,memlat\:l3\:gold
 	echo 0 > /sys/class/kgsl/kgsl-3d0/max_pwrlevel
 	echo 1555 > /sys/devices/platform/soc/soc:aop-set-ddr-freq/set_ddr_capped_freq
         setprop vendor.sku_identified 1
@@ -864,15 +915,66 @@ function enable_memory_features()
     MemTotal=${MemTotalStr:16:8}
 
     if [ $MemTotal -le 2097152 ]; then
-        #Enable B service adj transition for 2GB or less memory
-        setprop ro.vendor.qti.sys.fw.bservice_enable true
-        setprop ro.vendor.qti.sys.fw.bservice_limit 5
-        setprop ro.vendor.qti.sys.fw.bservice_age 5000
-
         #Enable Delay Service Restart
         setprop ro.vendor.qti.am.reschedule_service true
     fi
 }
+
+case "$target" in
+        "kalama")
+                if [ -f /sys/devices/soc0/chip_family ]; then
+                        chip_family_id=`cat /sys/devices/soc0/chip_family`
+                else
+                        chip_family_id=-1
+                fi
+
+                echo "adsprpc : chip_family_id : $chip_faily_id" > /dev/kmsg
+
+                case "$chip_family_id" in
+                    "0x7f")
+                    if [ -f /sys/devices/platform/soc/soc:qcom,msm_fastrpc/fastrpc_cdsp_status ]; then
+                        fastrpc_cdsp_status=`cat /sys/devices/platform/soc/soc:qcom,msm_fastrpc/fastrpc_cdsp_status`
+                    else
+                        fastrpc_cdsp_status=-1
+                    fi
+
+                    echo "adsprpc : fastrpc_cdsp_status : $fastrpc_cdsp_status" > /dev/kmsg
+
+                    if [ $fastrpc_cdsp_status -eq 0 ]; then
+                            setprop vendor.fastrpc.disable.cdsprpcd.daemon 1
+                            echo "adsprpc : Disabled cdsp daemon" > /dev/kmsg
+                    fi
+                esac
+                 ;;
+esac
+
+case "$target" in
+        "crow")
+                if [ -f /sys/devices/soc0/chip_family ]; then
+                        chip_family_id=`cat /sys/devices/soc0/chip_family`
+                else
+                        chip_family_id=-1
+                fi
+
+                echo "adsprpc : chip_family_id : $chip_faily_id" > /dev/kmsg
+
+                case "$chip_family_id" in
+                    "0x92")
+                    if [ -f /sys/devices/platform/soc/soc:qcom,msm_fastrpc/fastrpc_cdsp_status ]; then
+                        fastrpc_cdsp_status=`cat /sys/devices/platform/soc/soc:qcom,msm_fastrpc/fastrpc_cdsp_status`
+                    else
+                        fastrpc_cdsp_status=-1
+                    fi
+
+                    echo "adsprpc : fastrpc_cdsp_status : $fastrpc_cdsp_status" > /dev/kmsg
+
+                    if [ $fastrpc_cdsp_status -eq 0 ]; then
+                            setprop vendor.fastrpc.disable.cdsprpcd.daemon 1
+                            echo "adsprpc : Disabled cdsp daemon" > /dev/kmsg
+                    fi
+                esac
+                 ;;
+esac
 
 case "$target" in
     "msm7201a_ffa" | "msm7201a_surf" | "msm7627_ffa" | "msm7627_6x" | "msm7627a"  | "msm7627_surf" | \
@@ -5387,12 +5489,6 @@ case "$target" in
     "qsd8250_surf" | "qsd8250_ffa" | "qsd8650a_st1x")
         echo 50000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
         ;;
-esac
-
-case "$target" in
-    "qsd8650a_st1x")
-        mount -t debugfs none /sys/kernel/debug
-    ;;
 esac
 
 emmc_boot=`getprop vendor.boot.emmc`

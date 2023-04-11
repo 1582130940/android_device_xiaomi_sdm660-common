@@ -201,7 +201,7 @@
     <string-array name="config_mobile_tcp_buffers">
         <item>"5gnr:2097152,6291456,16777216,512000,2097152,8388608"</item>
         <item>"lte:2097152,4194304,8388608,262144,524288,1048576"</item>
-        <item>"lte_ca:4096,6291456,12582912,4096,1048576,2097152"</item>
+        <item>"lte_ca:4096,6291456,12582912,4096,1048576,4194304"</item>
         <item>"umts:4094,87380,1220608,4096,16384,1220608"</item>
         <item>"hspa:4094,87380,1220608,4096,16384,1220608"</item>
         <item>"hsupa:4094,87380,1220608,4096,16384,1220608"</item>
@@ -239,6 +239,33 @@
     <!-- Screen brightness when dozing. -->
     <integer name="config_screenBrightnessDoze">17</integer>
     <bool name="config_powerDecoupleInteractiveModeFromDisplay">false</bool>
+
+    <!-- The default refresh rate for a given device. If a non-zero value is set for
+         config_defaultPeakRefreshRate, then config_defaultRefreshRate may be set to 0, in that case
+         the value set for config_defaultPeakRefreshRate will act as the default peak frame rate -->
+    <integer name="config_defaultRefreshRate">0</integer>
+
+    <!-- The default peak refresh rate for a given device. Change this value if you want to allow
+         for higher refresh rates to be automatically used out of the box -->
+    <integer name="config_defaultPeakRefreshRate">240</integer>
+
+    <!-- Whether to select voice/data/sms preference without user confirmation -->
+    <bool name="config_voice_data_sms_auto_fallback">true</bool>
+
+    <!-- set to false if we need to show user confirmation
+         when alpha identifier is not provided by the UICC -->
+    <bool name="config_stkNoAlphaUsrCnf">false</bool>
+
+    <!-- Whether the device enable the standalone (SA) mode of 5G NR.-->
+    <bool name="config_telephony5gStandalone">true</bool>
+    <!-- Whether the device enable the non-standalone (NSA) mode of 5G NR.-->
+    <bool name="config_telephony5gNonStandalone">true</bool>
+
+    <!-- Make the default config as UNKNOWN so that Modem configurtion would be retained -->
+    <integer name="config_default_cellular_usage_setting">-1</integer>
+
+    <!-- Support decoding of GSM 8 bit encoded SMS-->
+    <bool translatable="false" name="config_sms_decode_gsm_8bit_data">true</bool>
 
     <!-- The name of the package that will hold the dialer role by default. -->
     <!-- <string name="config_defaultDialer" translatable="false">org.codeaurora.dialer</string> -->

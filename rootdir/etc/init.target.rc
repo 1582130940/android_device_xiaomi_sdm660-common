@@ -214,7 +214,7 @@ on charger
     setprop sys.usb.configfs 1
     start vendor.power_off_alarm
 
-service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
+service vendor.hvdcp_opti /vendor/bin/hvdcp_opti
      class main
      user root
      group system wakelock

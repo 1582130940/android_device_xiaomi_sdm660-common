@@ -139,6 +139,9 @@ vendor.display.disable_skip_validate=1
 vendor.display.enable_default_color_mode=1
 vendor.gralloc.enable_fb_ubwc=1
 
+# DPM
+persist.vendor.dpm.idletimer.mode=default
+
 # FRP
 ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
@@ -158,6 +161,10 @@ ro.crypto.volume.filenames_mode=aes-256-cts
 persist.dbg.volte_avail_ovr=1
 persist.dbg.vt_avail_ovr=1
 persist.dbg.wfc_avail_ovr=1
+persist.vendor.ims.disableADBLogs=1
+persist.vendor.ims.disableDebugLogs=1
+persist.vendor.ims.disableIMSLogs=1
+persist.vendor.ims.disableQXDMLogs=1
 
 # Media
 debug.stagefright.omx_default_rank.sw-audio=1
@@ -174,17 +181,19 @@ ro.vendor.extension_library=libqti-perfd-client.so
 
 # Radio
 DEVICE_PROVISIONED=1
+net.tethering.noprovisioning=true
 persist.radio.multisim.config=dsds
 persist.vendor.data.iwlan.enable=true
 persist.vendor.data.mode=concurrent
 persist.vendor.radio.apm_sim_not_pwdn=1
 persist.vendor.radio.custom_ecc=1
 persist.vendor.radio.data_con_rprt=1
+persist.vendor.radio.enableadvancedscan=true
 persist.vendor.radio.mt_sms_ack=30
 persist.vendor.radio.procedure_bytes=SKIP
 persist.vendor.radio.rat_on=combine
 persist.vendor.radio.sib16_support=1
-ro.telephony.default_network=22,22
+ro.telephony.default_network=33,33
 ro.vendor.use_data_netmgrd=true
 telephony.lteOnCdmaDevice=1
 

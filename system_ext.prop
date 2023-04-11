@@ -3,3 +3,7 @@ persist.vendor.dpm.feature=11
 
 # Media
 ro.media.recorder-max-base-layer-fps=60
+
+# Radio
+ro.telephony.sim_slots.count=2
+telephony.active_modems.max_count=2

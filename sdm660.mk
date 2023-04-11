@@ -34,7 +34,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml \
-    frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level.xml \
+    frameworks/native/data/etc/android.hardware.vulkan.level-1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level.xml \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version-1_1.xml \
     frameworks/native/data/etc/android.hardware.vulkan.compute-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.compute.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
@@ -80,6 +80,7 @@ PRODUCT_PACKAGES += \
     android.hardware.soundtrigger@2.2-impl
 
 PRODUCT_PACKAGES += \
+    audioadsprpcd \
     liba2dpoffload \
     libaudio-resampler \
     libbatterylistener \
@@ -204,7 +205,7 @@ PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey
 
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.3.vendor \
+    android.hardware.drm@1.4.vendor \
     libdrm.vendor
 
 # Fingerprint
@@ -330,7 +331,8 @@ PRODUCT_COPY_FILES += \
 
 # Keymaster
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.0.vendor
+    android.hardware.keymaster@4.0.vendor \
+    android.hardware.keymaster@4.1.vendor
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -380,6 +382,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libcodec2_soft_avcdec \
     libcodec2_soft_avcenc \
+    libcodec2_soft_common.vendor \
     libcodec2_soft_h263dec \
     libcodec2_soft_h263enc \
     libcodec2_soft_mpeg4dec \
@@ -474,10 +477,10 @@ PRODUCT_PACKAGES += \
     rild
 
 PRODUCT_PACKAGES += \
-    android.hardware.radio@1.5 \
-    android.hardware.radio@1.5.vendor \
-    android.hardware.radio.config@1.2 \
-    android.hardware.radio.config@1.2.vendor \
+    android.hardware.radio@1.6 \
+    android.hardware.radio@1.6.vendor \
+    android.hardware.radio.config@1.3 \
+    android.hardware.radio.config@1.3.vendor \
     android.hardware.radio.deprecated@1.0 \
     android.hardware.radio.deprecated@1.0.vendor \
     android.hardware.secure_element@1.2 \
@@ -537,6 +540,7 @@ PRODUCT_COPY_FILES += \
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
+    android.hardware.wifi.hostapd@1.0.vendor \
     android.hardware.wifi@1.0-service \
     hostapd \
     hostapd_cli \

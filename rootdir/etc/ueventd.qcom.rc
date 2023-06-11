@@ -566,3 +566,8 @@ subsystem mem_buf_vm
 # hdmi cec hal
 /dev/cec*                                            0660    system  system
 /sys/devices/platform/soc/984000.i2c/i2c-0/0-002b    get_hpd_stat    0660   system   system
+
+# Charger
+/sys/class/power_supply/battery  battery_charging_enabled   0660    system  system
+/sys/class/power_supply/battery  charging_enabled           0660    system  system
+/sys/class/power_supply/battery  input_suspend              0660    system  system

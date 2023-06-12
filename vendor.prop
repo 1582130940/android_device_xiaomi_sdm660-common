@@ -115,6 +115,7 @@ debug.cpurend.vsync=false
 debug.hwui.skia_atrace_enabled=false
 debug.sf.auto_latch_unsignaled=true
 debug.sf.enable_hwc_vds=1
+debug.sf.enable_transaction_tracing=false
 debug.sf.hw=1
 ro.hardware.egl=adreno
 ro.hardware.vulkan=adreno

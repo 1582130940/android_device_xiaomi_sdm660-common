@@ -214,6 +214,7 @@ PRODUCT_PACKAGES += \
     android.frameworks.displayservice@1.0_32 \
     android.frameworks.displayservice@1.0.vendor \
     android.frameworks.displayservice@1.0 \
+    disable_configstore \
     libdisplayconfig \
     libgralloc.qti \
     libqdMetaData \

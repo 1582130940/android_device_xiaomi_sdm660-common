@@ -117,23 +117,11 @@ void Lights::setLED() {
     switch (state.flashMode) {
         case FlashMode::HARDWARE:
         case FlashMode::TIMED:
-            if (mWhiteLED) {
-                rc = kLEDs[WHITE].setBreath(blink);
-            } else {
-                rc = kLEDs[RED].setBreath(blink && color.red);
-                rc &= kLEDs[GREEN].setBreath(blink && color.green);
-                rc &= kLEDs[BLUE].setBreath(blink && color.blue);
-            }
+                rc = kLEDs[RED].setBreath(blink);
             if (rc) break;
             FALLTHROUGH_INTENDED;
         default:
-            if (mWhiteLED) {
-                rc = kLEDs[WHITE].setBrightness(color.toBrightness());
-            } else {
-                rc = kLEDs[RED].setBrightness(color.red);
-                rc &= kLEDs[GREEN].setBrightness(color.green);
-                rc &= kLEDs[BLUE].setBrightness(color.blue);
-            }
+                rc = kLEDs[RED].setBrightness(color.toBrightness());
             break;
     }
 

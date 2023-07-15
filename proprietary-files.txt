@@ -148,6 +148,10 @@ vendor/lib64/libaudioparsers.so
 vendor/lib64/libhdmipassthru.so
 vendor/lib64/libqtigef.so
 
+# Audio - from cheetah-user 13 TQ3A.230705.001 10216780 release-keys
+vendor/lib/soundfx/libspatialaudio.so
+vendor/lib64/soundfx/libspatialaudio.so
+
 # Bluetooth - from hon660
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
 vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc

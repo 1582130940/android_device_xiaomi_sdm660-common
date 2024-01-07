@@ -293,6 +293,10 @@ PRODUCT_PACKAGES += \
     libdrm \
     libdrm.vendor
 
+# Fastbootd
+PRODUCT_PACKAGES += \
+    fastbootd
+
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.3-service.xiaomi

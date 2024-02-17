@@ -405,7 +405,7 @@ esac
 case "$target" in
        "msm8937")
           case "$soc_hwid" in
-              386|354|353|303)
+              386|354|353|303|436)
                  # enable qrtr-ns service for kernel 4.14 or above
                  KernelVersionStr=`cat /proc/sys/kernel/osrelease`
                  KernelVersionS=${KernelVersionStr:2:2}
@@ -414,56 +414,12 @@ case "$target" in
 
                  if [ $KernelVersionA -ge 4 ] && [ $KernelVersionB -ge 14 ]; then
                      setprop init.svc.vendor.qrtrns.enable 1
+                     setprop ro.sf.disable_triple_buffer 1
                  fi
                  ;;
            esac
            ;;
  esac
-
-# set Lilliput LCD density for ADP
-product=`getprop ro.board.platform`
-
-case "$product" in
-        "msmnile_au")
-         setprop vendor.display.lcd_density 160
-         echo 902400000 > /sys/class/devfreq/soc:qcom,cpu0-cpu-l3-lat/min_freq
-         echo 1612800000 > /sys/class/devfreq/soc:qcom,cpu0-cpu-l3-lat/max_freq
-         echo 902400000 > /sys/class/devfreq/soc:qcom,cpu4-cpu-l3-lat/min_freq
-         echo 1612800000 > /sys/class/devfreq/soc:qcom,cpu4-cpu-l3-lat/max_freq
-         ;;
-        *)
-        ;;
-esac
-case "$product" in
-        "sm6150_au")
-         setprop vendor.display.lcd_density 160
-         ;;
-        *)
-        ;;
-esac
-case "$product" in
-        "sdmshrike_au")
-         setprop vendor.display.lcd_density 160
-         ;;
-        *)
-        ;;
-esac
-
-case "$product" in
-        "msmnile_gvmq")
-         setprop vendor.display.lcd_density 160
-         ;;
-        *)
-        ;;
-esac
-
-case "$product" in
-        "msmnile_gvmgh")
-         setprop vendor.display.lcd_density 160
-         ;;
-        *)
-        ;;
-esac
 
 # Setup display nodes & permissions
 # HDMI can be fb1 or fb2

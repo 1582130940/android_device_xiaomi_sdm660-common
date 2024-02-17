@@ -29,6 +29,7 @@
 # Changes from Qualcomm Innovation Center are provided under the following license:
 # Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause-Clear
+#
 
 function 8953_sched_dcvs_eas()
 {
@@ -949,7 +950,7 @@ case "$target" in
 esac
 
 case "$target" in
-        "crow")
+        "parrot" | "crow")
                 if [ -f /sys/devices/soc0/chip_family ]; then
                         chip_family_id=`cat /sys/devices/soc0/chip_family`
                 else
@@ -959,7 +960,7 @@ case "$target" in
                 echo "adsprpc : chip_family_id : $chip_faily_id" > /dev/kmsg
 
                 case "$chip_family_id" in
-                    "0x92")
+                    "0x84" | "0x92")
                     if [ -f /sys/devices/platform/soc/soc:qcom,msm_fastrpc/fastrpc_cdsp_status ]; then
                         fastrpc_cdsp_status=`cat /sys/devices/platform/soc/soc:qcom,msm_fastrpc/fastrpc_cdsp_status`
                     else
@@ -969,6 +970,34 @@ case "$target" in
                     echo "adsprpc : fastrpc_cdsp_status : $fastrpc_cdsp_status" > /dev/kmsg
 
                     if [ $fastrpc_cdsp_status -eq 0 ]; then
+                            setprop vendor.fastrpc.disable.cdsprpcd.daemon 1
+                            echo "adsprpc : Disabled cdsp daemon" > /dev/kmsg
+                    fi
+                esac
+                 ;;
+esac
+
+case "$target" in
+        "pineapple" | "cliffs")
+                if [ -f /sys/devices/soc0/chip_family ]; then
+                        chip_family_id=`cat /sys/devices/soc0/chip_family`
+                else
+                        chip_family_id=-1
+                fi
+
+                echo "adsprpc : chip_family_id : $chip_faily_id" > /dev/kmsg
+
+                case "$chip_family_id" in
+                    "0x8a" | "0x94")
+                    if [ -f /sys/devices/platform/soc/soc:qcom,msm_fastrpc/fastrpc_nsp_status ]; then
+                        fastrpc_nsp_status=`cat /sys/devices/platform/soc/soc:qcom,msm_fastrpc/fastrpc_nsp_status`
+                    else
+                        fastrpc_nsp_status=-1
+                    fi
+
+                    echo "adsprpc : fastrpc_nsp_status : $fastrpc_nsp_status" > /dev/kmsg
+
+                    if [ $fastrpc_nsp_status -eq 0 ]; then
                             setprop vendor.fastrpc.disable.cdsprpcd.daemon 1
                             echo "adsprpc : Disabled cdsp daemon" > /dev/kmsg
                     fi
@@ -4166,93 +4195,6 @@ case "$target" in
     # Turn on sleep modes
     echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
   ;;
-esac
-
-
-case "$target" in
-    "qcs605")
-
-        #Apply settings for qcs605
-        # Set the default IRQ affinity to the silver cluster. When a
-        # CPU is isolated/hotplugged, the IRQ affinity is adjusted
-        # to one of the CPU from the default IRQ affinity mask.
-        echo 3f > /proc/irq/default_smp_affinity
-
-        if [ -f /sys/devices/soc0/soc_id ]; then
-                soc_id=`cat /sys/devices/soc0/soc_id`
-        else
-                soc_id=`cat /sys/devices/system/soc/soc0/id`
-        fi
-
-        if [ -f /sys/devices/soc0/hw_platform ]; then
-            hw_platform=`cat /sys/devices/soc0/hw_platform`
-        else
-            hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
-        fi
-
-        if [ -f /sys/devices/soc0/platform_subtype_id ]; then
-            platform_subtype_id=`cat /sys/devices/soc0/platform_subtype_id`
-        fi
-
-        case "$soc_id" in
-            "347" )
-      # Core control parameters on silver
-      echo 4 > /sys/devices/system/cpu/cpu0/core_ctl/min_cpus
-      echo 60 > /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres
-      echo 40 > /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres
-      echo 100 > /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms
-      echo 0 > /sys/devices/system/cpu/cpu0/core_ctl/is_big_cluster
-      echo 8 > /sys/devices/system/cpu/cpu0/core_ctl/task_thres
-
-      # Setting b.L scheduler parameters
-      echo 96 > /proc/sys/kernel/sched_upmigrate
-      echo 90 > /proc/sys/kernel/sched_downmigrate
-      echo 140 > /proc/sys/kernel/sched_group_upmigrate
-      echo 120 > /proc/sys/kernel/sched_group_downmigrate
-
-      # configure governor settings for little cluster
-      echo "schedutil" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-      echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/rate_limit_us
-      echo 1209600 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq
-
-      # configure governor settings for big cluster
-      echo "schedutil" > /sys/devices/system/cpu/cpu6/cpufreq/scaling_governor
-      echo 0 > /sys/devices/system/cpu/cpu6/cpufreq/schedutil/rate_limit_us
-      echo 1344000 > /sys/devices/system/cpu/cpu6/cpufreq/schedutil/hispeed_freq
-
-      # Enable bus-dcvs
-      for cpubw in /sys/class/devfreq/*qcom,cpubw*
-            do
-                echo "bw_hwmon" > $cpubw/governor
-                echo 50 > $cpubw/polling_interval
-                echo "1144 1720 2086 2929 3879 5931 6881" > $cpubw/bw_hwmon/mbps_zones
-                echo 4 > $cpubw/bw_hwmon/sample_ms
-                echo 68 > $cpubw/bw_hwmon/io_percent
-                echo 20 > $cpubw/bw_hwmon/hist_memory
-                echo 0 > $cpubw/bw_hwmon/hyst_length
-                echo 80 > $cpubw/bw_hwmon/down_thres
-                echo 0 > $cpubw/bw_hwmon/low_power_ceil_mbps
-                echo 68 > $cpubw/bw_hwmon/low_power_io_percent
-                echo 20 > $cpubw/bw_hwmon/low_power_delay
-                echo 0 > $cpubw/bw_hwmon/guard_band_mbps
-                echo 250 > $cpubw/bw_hwmon/up_scale
-                echo 1600 > $cpubw/bw_hwmon/idle_mbps
-            done
-
-            echo "cpufreq" > /sys/class/devfreq/soc:qcom,mincpubw/governor
-
-            # cpuset parameters
-            echo 0-5 > /dev/cpuset/background/cpus
-            echo 0-5 > /dev/cpuset/system-background/cpus
-
-            # Turn off scheduler boost at the end
-            echo 0 > /proc/sys/kernel/sched_boost
-
-            # Turn on sleep modes.
-            echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
-            ;;
-        esac
-    ;;
 esac
 
 case "$target" in

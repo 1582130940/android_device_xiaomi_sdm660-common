@@ -234,7 +234,7 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.1-service \
     vendor.qti.hardware.display.composer@1.0.vendor \
     vendor.qti.hardware.display.composer@2.1.vendor \
-    vendor.qti.hardware.display.composer@3.1.vendor \
+    vendor.qti.hardware.display.composer@3.2.vendor \
     hwcomposer.sdm660
 
 PRODUCT_PACKAGES += \
@@ -252,13 +252,13 @@ PRODUCT_PACKAGES += \
     libqdutils \
     libqservice \
     libtinyxml \
-    vendor.display.config@1.22 \
-    vendor.display.config@1.22.vendor \
+    vendor.display.config@1.16 \
+    vendor.display.config@1.16.vendor \
     vendor.display.config@2.0 \
     vendor.display.config@2.0.vendor \
     vendor.qti.hardware.display.mapper@1.1.vendor \
     vendor.qti.hardware.display.mapper@2.0.vendor \
-    vendor.qti.hardware.display.mapperextensions@1.3.vendor
+    vendor.qti.hardware.display.mapperextensions@1.4.vendor
 
 # Doze
 PRODUCT_PACKAGES += \
@@ -304,6 +304,7 @@ PRODUCT_PACKAGES += \
     android.hardware.gnss@2.1-impl-qti \
     android.hardware.gnss@2.1-service-qti \
     libbatching \
+    libcurl \
     libgeofencing \
     libgnss \
     libsensorndkbridge \
@@ -348,6 +349,7 @@ PRODUCT_PACKAGES += \
     android.hidl.allocator@1.0.vendor \
     android.hidl.base@1.0 \
     android.hidl.base@1.0.vendor \
+    android.hidl.memory.block@1.0.vendor \
     android.hidl.memory@1.0.vendor \
     libhidltransport \
     libhidltransport.vendor \
@@ -555,6 +557,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libjson \
     libjsoncpp \
+    libjsoncpp_ndk \
     libqti_vndfwk_detect \
     libqti_vndfwk_detect.vendor \
     libvndfwk_detect_jni.qti \
@@ -650,6 +653,7 @@ PRODUCT_PACKAGES += \
     android.hardware.wifi@1.6.vendor \
     hostapd \
     hostapd_cli \
+    libcld80211 \
     libwifi-hal-qcom \
     libwpa_client \
     vendor.qti.hardware.wifi.hostapd@1.3.vendor \

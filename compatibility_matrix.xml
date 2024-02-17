@@ -71,6 +71,7 @@
         <interface>
             <name>Isigma_miracast</name>
             <instance>sigmahal</instance>
+            <instance>sigmahal64</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">

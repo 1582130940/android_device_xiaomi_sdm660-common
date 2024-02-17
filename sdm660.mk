@@ -87,6 +87,7 @@ PRODUCT_PACKAGES += \
     android.hardware.audio@7.1-impl \
     android.hardware.audio.effect@7.0-impl \
     android.hardware.audio.service \
+    android.hardware.bluetooth.audio-V2-ndk.vendor \
     android.hardware.bluetooth.audio-impl \
     android.hardware.soundtrigger@2.3-impl
 
@@ -222,6 +223,10 @@ PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 PRODUCT_PACKAGES += \
     android.hardware.graphics.common-V1-ndk \
     android.hardware.graphics.common-V1-ndk.vendor \
+    android.hardware.graphics.common-V2-ndk \
+    android.hardware.graphics.common-V2-ndk.vendor \
+    android.hardware.graphics.common-V3-ndk \
+    android.hardware.graphics.common-V3-ndk.vendor \
     android.hardware.graphics.common@1.2.vendor \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
@@ -233,7 +238,7 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.1-service \
     vendor.qti.hardware.display.composer@1.0.vendor \
     vendor.qti.hardware.display.composer@2.1.vendor \
-    vendor.qti.hardware.display.composer@3.1.vendor \
+    vendor.qti.hardware.display.composer@3.2.vendor \
     hwcomposer.sdm660
 
 PRODUCT_PACKAGES += \
@@ -252,10 +257,30 @@ PRODUCT_PACKAGES += \
     libqdutils \
     libqservice \
     libtinyxml \
-    vendor.display.config@1.22 \
-    vendor.display.config@1.22.vendor \
+    vendor.display.config@1.16 \
+    vendor.display.config@1.16.vendor \
     vendor.display.config@2.0 \
     vendor.display.config@2.0.vendor \
+    vendor.qti.hardware.display.config-V1-ndk \
+    vendor.qti.hardware.display.config-V1-ndk.vendor \
+    vendor.qti.hardware.display.config-V10-ndk \
+    vendor.qti.hardware.display.config-V10-ndk.vendor \
+    vendor.qti.hardware.display.config-V2-ndk \
+    vendor.qti.hardware.display.config-V2-ndk.vendor \
+    vendor.qti.hardware.display.config-V3-ndk \
+    vendor.qti.hardware.display.config-V3-ndk.vendor \
+    vendor.qti.hardware.display.config-V4-ndk \
+    vendor.qti.hardware.display.config-V4-ndk.vendor \
+    vendor.qti.hardware.display.config-V5-ndk \
+    vendor.qti.hardware.display.config-V5-ndk.vendor \
+    vendor.qti.hardware.display.config-V6-ndk \
+    vendor.qti.hardware.display.config-V6-ndk.vendor \
+    vendor.qti.hardware.display.config-V7-ndk \
+    vendor.qti.hardware.display.config-V7-ndk.vendor \
+    vendor.qti.hardware.display.config-V8-ndk \
+    vendor.qti.hardware.display.config-V8-ndk.vendor \
+    vendor.qti.hardware.display.config-V9-ndk \
+    vendor.qti.hardware.display.config-V9-ndk.vendor \
     vendor.qti.hardware.display.mapper@1.1.vendor \
     vendor.qti.hardware.display.mapper@2.0.vendor \
     vendor.qti.hardware.display.mapperextensions@1.3.vendor
@@ -300,11 +325,14 @@ PRODUCT_PACKAGES += \
 
 # GNSS
 PRODUCT_PACKAGES += \
+    android.hardware.gnss-V1-ndk.vendor \
     android.hardware.gnss-V2-ndk.vendor \
+    android.hardware.gnss-V3-ndk.vendor \
     android.hardware.gnss@2.1.vendor \
     android.hardware.gnss@2.1-impl-qti \
     android.hardware.gnss@2.1-service-qti \
     libbatching \
+    libcurl \
     libgeofencing \
     libgnss \
     libsensorndkbridge \
@@ -406,6 +434,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.1.vendor \
     android.hardware.security.keymint-V1-ndk.vendor \
+    android.hardware.security.keymint-V2-ndk.vendor \
+    android.hardware.security.keymint-V3-ndk.vendor \
+    android.hardware.security.rkp-V1-ndk.vendor \
+    android.hardware.security.rkp-V3-ndk.vendor \
     android.hardware.security.secureclock-V1-ndk.vendor \
     android.hardware.security.sharedsecret-V1-ndk.vendor
 
@@ -584,21 +616,31 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     android.hardware.radio-V1-ndk.vendor \
+    android.hardware.radio-V2-ndk.vendor \
     android.hardware.radio@1.6 \
     android.hardware.radio@1.6.vendor \
     android.hardware.radio.config-V1-ndk.vendor \
     android.hardware.radio.config@1.3 \
     android.hardware.radio.config@1.3.vendor \
     android.hardware.radio.data-V1-ndk.vendor \
+    android.hardware.radio.data-V2-ndk.vendor \
     android.hardware.radio.deprecated@1.0 \
     android.hardware.radio.deprecated@1.0.vendor \
     android.hardware.radio.messaging-V1-ndk.vendor \
+    android.hardware.radio.messaging-V2-ndk.vendor \
     android.hardware.radio.modem-V1-ndk.vendor \
+    android.hardware.radio.modem-V2-ndk.vendor \
     android.hardware.radio.network-V1-ndk.vendor \
+    android.hardware.radio.network-V2-ndk.vendor \
     android.hardware.radio.sim-V1-ndk.vendor \
+    android.hardware.radio.sim-V2-ndk.vendor \
     android.hardware.radio.voice-V1-ndk.vendor \
+    android.hardware.radio.voice-V2-ndk.vendor \
     android.hardware.secure_element@1.2 \
-    android.hardware.secure_element@1.2.vendor
+    android.hardware.secure_element@1.2.vendor \
+    vendor.qti.hardware.qspa-V1-ndk \
+    vendor.qti.hardware.systemhelperaidl-V1-ndk \
+    vendor.qti.hardware.systemhelperaidl-V1-ndk.vendor
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \

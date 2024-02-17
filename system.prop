@@ -1,5 +1,30 @@
+# DPM
+persist.vendor.dpm.feature=11
+persist.vendor.dpm.idletimer.mode=default
+
 # Filesystem
 fs_mgr.overlayfs.prefer_cache_backing_storage=true
 
+# GPS
+persist.backup.ntpServer=0.pool.ntp.org
+
+# IMS
+persist.vendor.ims.disableADBLogs=1
+persist.vendor.ims.disableDebugLogs=1
+persist.vendor.ims.disableIMSLogs=1
+persist.vendor.ims.disableQXDMLogs=1
+
 # Logs
 persist.log.tag.OpenGLRenderer=S
+
+# Media
+media.settings.xml=/vendor/etc/media_profiles_vendor.xml
+ro.media.recorder-max-base-layer-fps=60
+vendor.mm.enable.qcom_parser=16777215
+
+# Radio
+ril.subscription.types=NV,RUIM
+ro.telephony.sim_slots.count=2
+
+# System Server
+persist.arm64.memtag.system_server=off

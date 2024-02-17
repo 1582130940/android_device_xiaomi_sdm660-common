@@ -350,6 +350,7 @@ subsystem mem_buf_vm
 
 # eSE permissions
 /dev/st54spi_gpio         0660   system     system
+/dev/stsafe320_gpio       0660   system     system
 
 # UIO devices
 /dev/uio0                 0660   system     system

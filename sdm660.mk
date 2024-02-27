@@ -355,7 +355,8 @@ PRODUCT_COPY_FILES += \
 
 # Health
 PRODUCT_PACKAGES += \
-    android.hardware.health-service.qti
+    android.hardware.health-service.qti \
+    android.hardware.health@2.1.vendor
 
 ifneq ($(AB_OTA_UPDATER),true)
 PRODUCT_PACKAGES += \

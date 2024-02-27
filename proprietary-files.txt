@@ -148,8 +148,7 @@ vendor/lib64/libaudioparsers.so
 vendor/lib64/libhdmipassthru.so
 vendor/lib64/libqtigef.so
 
-# Audio - from cheetah-user 13 TQ3A.230705.001 10216780 release-keys
-vendor/lib/soundfx/libspatialaudio.so
+# Audio - from husky-user 14 AP1A.240405.002 11480754 release-keys
 vendor/lib64/soundfx/libspatialaudio.so
 
 # Bluetooth - from hon660

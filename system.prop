@@ -2,6 +2,9 @@
 persist.vendor.dpm.feature=11
 persist.vendor.dpm.idletimer.mode=default
 
+# Filesystem
+fs_mgr.overlayfs.prefer_cache_backing_storage=true
+
 # GPS
 persist.backup.ntpServer=0.pool.ntp.org
 

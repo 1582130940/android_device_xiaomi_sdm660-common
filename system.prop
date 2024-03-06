@@ -1,2 +1,5 @@
 # Filesystem
 fs_mgr.overlayfs.prefer_cache_backing_storage=true
+
+# Logs
+persist.log.tag.OpenGLRenderer=S

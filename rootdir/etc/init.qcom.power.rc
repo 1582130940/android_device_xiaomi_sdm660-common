@@ -33,6 +33,9 @@ on property:init.svc.recovery=running
     trigger enable-low-power
 
 on property:sys.boot_completed=1
+    # Disable native stats collection service
+    stop statsd
+
     # Enable ZRAM on boot_complete
     swapon_all /vendor/etc/fstab.zram
     write /proc/sys/vm/swappiness 60

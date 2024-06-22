@@ -125,6 +125,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     liba2dpoffload \
     libaudio-resampler \
+    libaudioroute.vendor \
     libbatterylistener \
     libcirrusspkrprot \
     libexthwplugin \
@@ -194,7 +195,14 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider-V2-ndk.vendor \
     android.hardware.camera.provider-V3-ndk.vendor \
     android.hardware.camera.provider@2.7 \
+    libcamera_metadata.vendor \
     libdng_sdk.vendor \
+    libexif.vendor \
+    libion.vendor \
+    libjpeg.vendor \
+    liblz4.vendor \
+    libutilscallstack.vendor \
+    libyuv.vendor \
     vendor.qti.hardware.camera.device@1.0
 
 # Configstore
@@ -366,7 +374,7 @@ PRODUCT_PACKAGES += \
     android.hardware.gnss@2.1-impl-qti \
     android.hardware.gnss@2.1-service-qti \
     libbatching \
-    libcurl \
+    libcurl.vendor \
     libgeofencing \
     libgnss \
     libsensorndkbridge \
@@ -413,6 +421,7 @@ PRODUCT_PACKAGES += \
     android.hidl.base@1.0.vendor \
     android.hidl.memory.block@1.0.vendor \
     android.hidl.memory@1.0.vendor \
+    libhidlmemory.vendor \
     libhidltransport \
     libhidltransport.vendor \
     libhwbinder \
@@ -587,6 +596,7 @@ PRODUCT_PACKAGES += \
     libstagefright_omx.vendor \
     libstagefright_omx_utils.vendor \
     libstagefright_softomx.vendor \
+    libstagefright_softomx_plugin.vendor \
     libstagefright_xmlparser.vendor \
     libstagefrighthw
 
@@ -601,6 +611,7 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_PACKAGES += \
     android.hardware.power@1.3.vendor \
     android.hardware.power-service.lineage-libperfmgr \
+    libpower.vendor \
     libqti-perfd-client
 
 PRODUCT_COPY_FILES += \
@@ -629,11 +640,15 @@ PRODUCT_COPY_FILES += \
 
 # QMI
 PRODUCT_PACKAGES += \
+    libcrypto_utils.vendor \
     libjson \
-    libjsoncpp \
+    libjsoncpp.vendor \
     libjsoncpp_ndk \
+    libnetutils.vendor \
     libqti_vndfwk_detect \
     libqti_vndfwk_detect.vendor \
+    libsqlite.vendor \
+    libssl.vendor \
     libvndfwk_detect_jni.qti \
     libvndfwk_detect_jni.qti.vendor
 
@@ -755,6 +770,7 @@ PRODUCT_PACKAGES += \
     hostapd_cli \
     libcld80211 \
     libwifi-hal-qcom \
+    libwifi-system-iface.vendor \
     libwpa_client \
     vendor.qti.hardware.wifi.hostapd@1.3.vendor \
     vendor.qti.hardware.wifi.supplicant-V1-ndk.vendor \
@@ -782,6 +798,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.media.audio.common.types-V2-cpp \
     libnl \
+    libpng.vendor \
+    libprocessgroup.vendor \
     libwfdaac_vendor
 
 # Inherit the proprietary files

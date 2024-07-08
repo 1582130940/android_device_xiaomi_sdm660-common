@@ -6,6 +6,7 @@ audio_hal.period_multiplier             u:object_r:vendor_default_prop:s0
 persist.audio.fluence.voicecomm         u:object_r:vendor_default_prop:s0
 
 # Bluetooth
+ro.hsm.hw.rev                           u:object_r:hal_bluetooth_qti_prop:s0
 ro.hsm.model.num                        u:object_r:hal_bluetooth_qti_prop:s0
 
 # Camera

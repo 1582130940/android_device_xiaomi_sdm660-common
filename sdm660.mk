@@ -257,8 +257,7 @@ PRODUCT_PACKAGES += \
     hwcomposer.sdm660
 
 PRODUCT_PACKAGES += \
-    android.hardware.memtrack-service.example \
-    memtrack.sdm660
+    vendor.qti.hardware.memtrack-service
 
 PRODUCT_PACKAGES += \
     android.frameworks.displayservice@1.0 \
